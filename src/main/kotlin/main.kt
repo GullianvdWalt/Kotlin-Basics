@@ -7,7 +7,6 @@ val programmingLanguages = arrayOf("Kotlin", "Java", "PHP", "C", "C++", "C#");
 val cars = listOf("BMW", "Volkswagen", "Nissan", "Mazda", "Porsche");
 // ### Mutable List (Apply to all collections - can add afterwords) ###
 val carList = mutableListOf("BMW", "Volkswagen", "Nissan", "Mazda", "Porsche");
-
 // ### Maps ###
 val superHeroes = mapOf("strength" to "John", "speed" to "William", "intelligence" to "Peter");
 // Unit is same as void, not needed to state
@@ -44,6 +43,15 @@ fun printAllLanguages(){
     }
     println("### For Loop Certain Amount (3) ###")
     printLanguages(3);
+}
+// ### Vararg Parameters ###
+fun getGreeting(name: String, vararg surname: String){
+    if(surname.isEmpty()){
+        println("Hello $name, how are you?");
+    }else{
+        println("Hello $name $surname, how are you?");
+    }
+
 }
 
 
@@ -83,4 +91,6 @@ fun main(args: Array<String>) {
     superHeroes.forEach{ (key, value) -> println("$value has super $key");}
 
     carList.add("Mercedes");
+
+    getGreeting("John");
 }
