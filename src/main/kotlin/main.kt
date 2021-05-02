@@ -3,8 +3,13 @@ var num2: Int = 2;
 // #### Array ####
 val programmingLanguages = arrayOf("Kotlin", "Java", "PHP", "C", "C++", "C#");
 // #### Lists ####
+// ### Immutable List (Apply to all collections - cannot add afterwords) ###
 val cars = listOf("BMW", "Volkswagen", "Nissan", "Mazda", "Porsche");
+// ### Mutable List (Apply to all collections - can add afterwords) ###
+val carList = mutableListOf("BMW", "Volkswagen", "Nissan", "Mazda", "Porsche");
 
+// ### Maps ###
+val superHeroes = mapOf("strength" to "John", "speed" to "William", "intelligence" to "Peter");
 // Unit is same as void, not needed to state
 fun getName(name: String, number : Int) = println("$name $number");
 // Arrays and Loops
@@ -74,4 +79,8 @@ fun main(args: Array<String>) {
     cars.forEach{ car ->
         print(car + "\n");
     }
+    // Print Map
+    superHeroes.forEach{ (key, value) -> println("$value has super $key");}
+
+    carList.add("Mercedes");
 }
