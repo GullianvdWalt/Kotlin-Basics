@@ -51,10 +51,14 @@ fun getGreeting(name: String, vararg surname: String){
     }else{
         println("Hello $name $surname, how are you?");
     }
-
 }
-
-
+fun greetPerson(name: String, surname: String){
+    println("Hello $name $surname, how are you?");
+}
+// Default Parameters
+fun greetPersonDefault(name: String = "Gullian", surname: String = "Doe"){
+    println("Hello $name $surname, how are you?");
+}
 fun main(args: Array<String>) {
     // #### Variables ####
     // ### Local variables ###
@@ -93,4 +97,9 @@ fun main(args: Array<String>) {
     carList.add("Mercedes");
 
     getGreeting("John");
+
+    // Named Parameters
+    greetPerson(name = "Gullian", surname = "Van Der Walt");
+    // Default Parameters
+    greetPersonDefault();
 }
