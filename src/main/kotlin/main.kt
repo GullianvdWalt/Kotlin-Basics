@@ -102,4 +102,10 @@ fun main(args: Array<String>) {
     greetPerson(name = "Gullian", surname = "Van Der Walt");
     // Default Parameters
     greetPersonDefault();
+
+    // class (Object) Instance
+    val person = Person();
+    person.printPerson();
+
+
 }
