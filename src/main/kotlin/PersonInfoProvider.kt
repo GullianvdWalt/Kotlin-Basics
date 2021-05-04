@@ -10,22 +10,42 @@ interface PersonInfoProvider {
 interface SessionInfoProvider{
     fun getSessionId() : String;
 }
+
 // Implement multiple interfaces
-class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider{
+// By default kotlin classes are closed and cannot be inherited from.
+// open makes it possible to inherent or extend a class
+open class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider{
     // Override Val
     override val providerInfo : String
     get() = "BasicInfoProvider";
+    // Available to children but not to public
+    protected open val sessionIdPrefix = "Session";
+
     // Override Functions
     override fun printInfo(person: Person) {
         person.printPerson()
     }
     override fun getSessionId(): String {
-        return "Session Id: 1";
+        return sessionIdPrefix;
     }
 }
 
 fun main(){
-    val provider = BasicInfoProvider();
+    val provider = FancyInfoProvider();
     provider.printInfo(Person());
     provider.getSessionId();
+    checkTypes(provider);
+}
+
+// Type Checking and Smart Casting
+fun checkTypes(infoProvider: PersonInfoProvider){
+    if(infoProvider is SessionInfoProvider){
+        println("Is Session Info Provider")
+    }else{
+        println("Is Not Session Info Provider")
+        // Type Casting
+        (infoProvider as SessionInfoProvider).getSessionId();
+        // Kotlin Smart Casting
+        infoProvider.getSessionId();
+    }
 }
