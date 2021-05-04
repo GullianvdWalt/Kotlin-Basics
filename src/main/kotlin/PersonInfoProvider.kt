@@ -4,21 +4,28 @@
  */
 interface PersonInfoProvider {
     val providerInfo : String;
-    fun printInfo(person: Person){
-        // Default interface methods
-        println("Info");
-        person.printPerson()
-    }
+    fun printInfo(person: Person);
 
 }
-
-// Implement
-class BasicInfoProvider : PersonInfoProvider{
+interface SessionInfoProvider{
+    fun getSessionId() : String;
+}
+// Implement multiple interfaces
+class BasicInfoProvider : PersonInfoProvider, SessionInfoProvider{
+    // Override Val
     override val providerInfo : String
     get() = "BasicInfoProvider";
+    // Override Functions
+    override fun printInfo(person: Person) {
+        person.printPerson()
+    }
+    override fun getSessionId(): String {
+        return "Session Id: 1";
+    }
 }
 
 fun main(){
     val provider = BasicInfoProvider();
     provider.printInfo(Person());
+    provider.getSessionId();
 }
